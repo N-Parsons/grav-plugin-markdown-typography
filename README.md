@@ -1,6 +1,6 @@
 # Grav Markdown Typography Plugin
 
-The **Markdown Typography plugin** for [Grav](http://github.com/getgrav/grav) allows for automatic substitution of various typographic characters.
+The **Markdown Typography plugin** for [Grav](http://github.com/getgrav/grav) enables substitution of typographic characters during Markdown processing.
 
 ## Installation
 
@@ -23,6 +23,8 @@ line_breaks: true
 dashes: true
 ellipsis: true
 interrobang: true
+arrows: true
+plus_minus: true
 ```
 
 ## License

@@ -1,6 +1,6 @@
 name: Markdown Typography
 version: 1.0.0
-description: "Enables simple substitutions for typographic characters"
+description: "Enables substitution of typographic characters during Markdown processing"
 icon: quote-right
 author:
   name: Nathan Parsons

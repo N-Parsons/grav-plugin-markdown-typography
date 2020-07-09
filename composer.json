@@ -1,7 +1,7 @@
 {
   "name": "n-parsons/markdown-typography",
   "type": "grav-plugin",
-  "description": "Enables simple substitutions for typographic characters",
+  "description": "Enables substitution of typographic characters during Markdown processing",
   "keywords": [
     "plugin"
   ],
