@@ -84,10 +84,7 @@ There are two sets of arrows available, namely thin and thick, which use `-` and
 
 ### Plus-minus
 
-There are two ways to access the plus-minus symbol.
-
-- `+-`: ±
-- `+/-`: ±
+There are two ways to access the plus-minus symbol (±): `+-` or `+/-`.
 
 ## License
 
