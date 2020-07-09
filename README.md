@@ -48,7 +48,7 @@ This provides access to en dash (–) and em dash (—) via `--` and `---`, resp
 
 You should use an en dash in number and time ranges, such as `1--2pm`.
 
-Clauses can use either a spaced en dash `--` (eg. "something – clause") or an em dash without spaces `---` (eg. "something—clause"). There's also a shortcut for en dashed clauses, so `--` can be written as `-` instead.
+Clauses can use either a spaced en dash " -- " (eg. "something – clause") or an em dash without spaces "---" (eg. "something—clause"). There's also a shortcut for en dashed clauses, so " -- " can be written as " - " instead.
 
 ### Ellipsis
 
