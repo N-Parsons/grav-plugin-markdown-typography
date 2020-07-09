@@ -75,7 +75,7 @@ An interrobang consists of an exclamation point combined with a question mark. T
 - `==>`: ⇨
 - `==<`: ⇦
 
-Note: there's currently only one type of thick arrow.
+**Note:** there's currently only one type of thick arrow, but both `=` and `==` are supported to access this.
 
 ### Plus-minus
 
