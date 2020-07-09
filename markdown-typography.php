@@ -6,6 +6,9 @@ use RocketTheme\Toolbox\Event\Event;
 
 class MarkdownTypographyPlugin extends Plugin
 {
+    private array $thin_arrows;
+    private array $thick_arrows;
+
     /**
      * @return array
      */
@@ -26,8 +29,13 @@ class MarkdownTypographyPlugin extends Plugin
         // - $Element["handler"] changes for extents with Markdown inside
         // - Do arrows starting with "<" work in that version?
 
+        $arrows = $config["arrows"];
+
         // Enable arrows (before dashes to avoid conflict)
-        if ($config["arrows"]) {
+        if ($arrows["enabled"]) {
+            $this->thin_arrows = explode(",", $arrows["thin_arrows"]) ?: ["→","←","⟶","⟵"];
+            $this->thick_arrows = explode(",", $arrows["thick_arrows"]) ?: ["⇒","⇐","⟹","⟸"];
+
             // Add inline types
             $markdown->addInlineType("-", "TypographyArrowSingleRight");
             $markdown->addInlineType("=", "TypographyArrowDoubleRight");
@@ -41,7 +49,7 @@ class MarkdownTypographyPlugin extends Plugin
                         "extent" => strlen($matches[1]),
                         "element" => array(
                             "name" => "span",
-                            "text" => strlen($matches[1]) == 2 ? "→" : "⟶",  // single right arrow (long arrow: ⟶)
+                            "text" => strlen($matches[1]) == 2 ? $this->thin_arrows[0] : $this->thin_arrows[2 % count($this->thin_arrows)],  // single right arrow (long arrow: ⟶)
                             "attributes" => [
                                 "class" => "typography-arrow"
                             ]
@@ -54,7 +62,7 @@ class MarkdownTypographyPlugin extends Plugin
                         "extent" => strlen($matches[1]),
                         "element" => array(
                             "name" => "span",
-                            "text" => strlen($matches[1]) == 2 ? "←" : "⟵",  // single left arrow (long arrow: ⟵)
+                            "text" => strlen($matches[1]) == 2 ? $this->thin_arrows[1] : $this->thin_arrows[3 % count($this->thin_arrows)],  // single left arrow (long arrow: ⟵)
                             "attributes" => [
                                 "class" => "typography-arrow"
                             ]
@@ -71,7 +79,7 @@ class MarkdownTypographyPlugin extends Plugin
                         "extent" => strlen($matches[1]),
                         "element" => array(
                             "name" => "span",
-                            "text" => "⇨",  // fat right arrow
+                            "text" => strlen($matches[1]) == 2 ? $this->thick_arrows[0] : $this->thick_arrows[2 % count($this->thick_arrows)],  // fat right arrow
                             "attributes" => [
                                 "class" => "typography-arrow"
                             ]
@@ -84,7 +92,7 @@ class MarkdownTypographyPlugin extends Plugin
                         "extent" => strlen($matches[1]),
                         "element" => array(
                             "name" => "span",
-                            "text" => "⇦",  // fat left arrow
+                            "text" => strlen($matches[1]) == 2 ? $this->thick_arrows[1] : $this->thick_arrows[3 % count($this->thick_arrows)],  // fat left arrow
                             "attributes" => [
                                 "class" => "typography-arrow"
                             ]

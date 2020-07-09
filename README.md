@@ -23,8 +23,11 @@ line_breaks: true
 dashes: true
 ellipsis: true
 interrobang: true
-arrows: true
 plus_minus: true
+arrows:
+  enabled: true
+  thin_arrows: "→,←,⟶,⟵"
+  thick_arrows: "⇒,⇐,⟹,⟸"
 ```
 
 ## Features and Usage
@@ -61,6 +64,10 @@ An interrobang consists of an exclamation point combined with a question mark. T
 
 ### Arrows
 
+There are two sets of arrows available, namely thin and thick, which use `-` and `=` for the arrow shaft, respectively. The arrow symbols also come in two lengths, which are differntiated by the number of shaft characters (1 -> short, 2 -> long). If you set just one set of arrows (right and left), then they will be used for both lengths of arrow.
+
+**Note:** Due to the way Parsedown currently operates, the left and right variants of the arrow are accessed by changing the direction of the arrow head, _not_ by putting the arrow head at the start.
+
 #### Thin arrows:
 
 - `->`: →
@@ -70,12 +77,10 @@ An interrobang consists of an exclamation point combined with a question mark. T
 
 #### Thick arrows:
 
-- `=>`: ⇨
-- `=<`: ⇦
-- `==>`: ⇨
-- `==<`: ⇦
-
-**Note:** there's currently only one type of thick arrow, but both `=` and `==` are supported to access this.
+- `=>`: ⇒
+- `=<`: ⇐
+- `==>`: ⟹
+- `==<`: ⟸
 
 ### Plus-minus
 

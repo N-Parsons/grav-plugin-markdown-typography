@@ -4,5 +4,8 @@ line_breaks: true
 dashes: true
 ellipsis: true
 interrobang: true
-arrows: true
 plus_minus: true
+arrows:
+  enabled: true
+  thin_arrows: "→,←,⟶,⟵"
+  thick_arrows: "⇒,⇐,⟹,⟸"

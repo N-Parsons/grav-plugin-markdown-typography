@@ -78,18 +78,6 @@ form:
         1: Enabled
         0: Disabled
       validate:
-        type: bool
-
-    arrows:
-      type: toggle
-      label: Arrows ("->" => "→", "=>" => "⇨")
-      highlight: 1
-      default: 1
-      options:
-        1: Enabled
-        0: Disabled
-      validate:
-        type: bool
 
     plus_minus:
       type: toggle
@@ -101,3 +89,31 @@ form:
         0: Disabled
       validate:
         type: bool
+
+    arrows.fieldset:
+      type: fieldset
+      title: Arrows
+      info: "Useful arrow symbols: →/←, ⟶/⟵, ⇨/⇦, ⇒/⇐, ⟹/⟸"
+      icon: arrow-right
+
+      fields:
+        arrows.enabled:
+          type: toggle
+          label: Arrows ("->" => "→", "=>" => "⇨")
+          highlight: 1
+          default: 1
+          options:
+            1: Enabled
+            0: Disabled
+          validate:
+            type: bool
+
+        arrows.thin_arrows:
+          type: selectize
+          label: Thin arrows ("->"/"-->")
+          default: "→,←,⟶,⟵"
+
+        arrows.thick_arrows:
+          type: selectize
+          label: Thick arrows ("=>"/"==>")
+          default: "⇒,⇐,⟹,⟸"
