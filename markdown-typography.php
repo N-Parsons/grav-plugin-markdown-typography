@@ -41,7 +41,7 @@ class MarkdownTypographyPlugin extends Plugin
                         "extent" => strlen($matches[1]),
                         "element" => array(
                             "name" => "span",
-                            "text" => "→",  // single right arrow (long arrow: ⟶)
+                            "text" => strlen($matches[1]) == 2 ? "→" : "⟶",  // single right arrow (long arrow: ⟶)
                             "attributes" => [
                                 "class" => "typography-arrow"
                             ]
@@ -54,7 +54,7 @@ class MarkdownTypographyPlugin extends Plugin
                         "extent" => strlen($matches[1]),
                         "element" => array(
                             "name" => "span",
-                            "text" => "←",  // single left arrow (long arrow: ⟵)
+                            "text" => strlen($matches[1]) == 2 ? "←" : "⟵",  // single left arrow (long arrow: ⟵)
                             "attributes" => [
                                 "class" => "typography-arrow"
                             ]
