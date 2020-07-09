@@ -1,0 +1,103 @@
+name: Markdown Typography
+version: 1.0.0
+description: "Enables simple substitutions for typographic characters"
+icon: quote-right
+author:
+  name: Nathan Parsons
+  email: github@parsons.digital
+  url: https://github.com/n-parsons
+homepage: https://github.com/n-parsons/grav-plugin-markdown-typography
+keywords: typography, markdown
+bugs: https://github.com/n-parsons/grav-plugin-markdown-typography/issues
+license: MIT
+
+form:
+  validation: strict
+  fields:
+    enabled:
+      type: toggle
+      label: Plugin status
+      highlight: 1
+      default: 1
+      options:
+        1: Enabled
+        0: Disabled
+      validate:
+        type: bool
+
+    smart_quotes:
+      type: toggle
+      label: Smart quotes
+      highlight: 1
+      default: 1
+      options:
+        1: Enabled
+        0: Disabled
+      validate:
+        type: bool
+
+    line_breaks:
+      type: toggle
+      label: Line breaks (via "\")
+      highlight: 1
+      default: 1
+      options:
+        1: Enabled
+        0: Disabled
+      validate:
+        type: bool
+
+    dashes:
+      type: toggle
+      label: Dashes (eg. endash (--), emdash (---))
+      highlight: 1
+      default: 1
+      options:
+        1: Enabled
+        0: Disabled
+      validate:
+        type: bool
+
+    ellipsis:
+      type: toggle
+      label: Ellipsis ("..." => "…")
+      highlight: 1
+      default: 1
+      options:
+        1: Enabled
+        0: Disabled
+      validate:
+        type: bool
+
+    interrobang:
+      type: toggle
+      label: Ellipsis ("!?" => "‽")
+      highlight: 1
+      default: 1
+      options:
+        1: Enabled
+        0: Disabled
+      validate:
+        type: bool
+
+    arrows:
+      type: toggle
+      label: Arrows ("->" => "→", "=>" => "⇨")
+      highlight: 1
+      default: 1
+      options:
+        1: Enabled
+        0: Disabled
+      validate:
+        type: bool
+
+    plus_minus:
+      type: toggle
+      label: Plus-minus ("+-" => "±", "+/-" => "±")
+      highlight: 1
+      default: 1
+      options:
+        1: Enabled
+        0: Disabled
+      validate:
+        type: bool

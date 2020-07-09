@@ -1,0 +1,8 @@
+enabled: true
+smart_quotes: true
+line_breaks: true
+dashes: true
+ellipsis: true
+interrobang: true
+arrows: true
+plus_minus: true
