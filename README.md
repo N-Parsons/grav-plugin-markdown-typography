@@ -38,7 +38,7 @@ Replaces straight quotes ('/") with the appropriate curved quote marks (‘’/�
 
 ### Line breaks
 
-While line breaks should be avoided most of the time, there are some times when they are useful, so all you need to do is end your line with `\`.
+While line breaks should be avoided most of the time, there are some times when they are useful. You can already get line breaks by adding two spaces at the end of a line, but if you prefer to have a more obvious and explicit notation, this plugin allows you to get a line break by adding `\` to the end your line.
 
 ```markdown
 First line\
