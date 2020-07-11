@@ -179,13 +179,13 @@ class MarkdownTypographyPlugin extends Plugin
 
             // Add function to handle double quotes
             $markdown->inlineTypographyDoubleQuote = function($excerpt) {
-                if (preg_match('/^"(.*?)"/', $excerpt["text"], $matches))
+                if (preg_match_all('/^"([\s\S]*?)"/', $excerpt["text"], $matches))
                 {
                     return array(
-                        "extent" => strlen($matches[0]),
+                        "extent" => strlen($matches[0][0]),
                         "element" => array(
                             "name" => "span",
-                            "text" => "“".$matches[1]."”",  // double-quotes
+                            "text" => "“".$matches[1][0]."”",  // double-quotes
                             'handler' => "line",
                         ),
                     );
@@ -203,13 +203,13 @@ class MarkdownTypographyPlugin extends Plugin
                             "text" => "’",  // apostrophe
                         ),
                     );
-                } elseif (preg_match("/^'(.*?)'(?=\W?)/", $excerpt["text"], $matches))
+                } elseif (preg_match_all("/^'([\s\S]*?)'(?=\W?)/", $excerpt["text"], $matches))
                 {
                     return array(
-                        "extent" => strlen($matches[0]),
+                        "extent" => strlen($matches[0][0]),
                         "element" => array(
                             "name" => "span",
-                            "text" => "‘".$matches[1]."’",  // single-quotes
+                            "text" => "‘".$matches[1][0]."’",  // single-quotes
                             'handler' => "line",
                         ),
                     );
