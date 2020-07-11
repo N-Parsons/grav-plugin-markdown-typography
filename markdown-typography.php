@@ -186,7 +186,18 @@ class MarkdownTypographyPlugin extends Plugin
                         "element" => array(
                             "name" => "span",
                             "text" => "“".$matches[1][0]."”",  // double-quotes
-                            'handler' => "line",
+                            "handler" => "line",
+                        ),
+                    );
+                }
+                elseif (preg_match('/^\s?"/', $excerpt["context"], $matches))
+                {
+                    return array(
+                        "extent" => strlen($excerpt["text"]),
+                        "element" => array(
+                            "name" => "span",
+                            "text" => "“" . substr($excerpt["text"], 1),  // Lonely opening double-quotes
+                            "handler" => "line",
                         ),
                     );
                 }
@@ -203,14 +214,26 @@ class MarkdownTypographyPlugin extends Plugin
                             "text" => "’",  // apostrophe
                         ),
                     );
-                } elseif (preg_match_all("/^'([\s\S]*?)'(?=\W?)/", $excerpt["text"], $matches))
+                }
+                elseif (preg_match_all("/^'([\s\S]*?)'(?=\W?)/", $excerpt["text"], $matches))
                 {
                     return array(
                         "extent" => strlen($matches[0][0]),
                         "element" => array(
                             "name" => "span",
                             "text" => "‘".$matches[1][0]."’",  // single-quotes
-                            'handler' => "line",
+                            "handler" => "line",
+                        ),
+                    );
+                }
+                elseif (preg_match("/^(')|(\s')/", $excerpt["context"], $matches))
+                {
+                    return array(
+                        "extent" => strlen($excerpt["text"]),
+                        "element" => array(
+                            "name" => "span",
+                            "text" => "‘" . substr($excerpt["text"], 1),  // Lonely opening single-quote
+                            "handler" => "line",
                         ),
                     );
                 }
