@@ -15,7 +15,7 @@ class MarkdownTypographyPlugin extends Plugin
     public static function getSubscribedEvents()
     {
         return [
-            "onMarkdownInitialized" => ["onMarkdownInitialized", 0]
+            "onMarkdownInitialized" => ["onMarkdownInitialized", 0],
         ];
     }
 
@@ -23,6 +23,7 @@ class MarkdownTypographyPlugin extends Plugin
     {
         $markdown = $event["markdown"];
         $config = $this->grav["config"]->get("plugins.".$this->name);
+
 
         // TODO: Once Grav requires Parsedown 1.8:
         // - $Element["name"] is no longer required, so remove redundant spans
@@ -238,6 +239,27 @@ class MarkdownTypographyPlugin extends Plugin
                     );
                 }
             };
+
+
+            // Don't process inside of inline shortcode tags
+            // This is a fix to stop quoted attributes getting broken when inline
+            // Temporary tags are stripped by $this->stripTemporaryTags()
+            // Once Parsedown 1.8 is used in Grav, the temp tags will be unnecessary
+            $markdown->addInlineType("[", "TypographyShortcode");
+            $markdown->inlineTypographyShortcode = function($excerpt) {
+                if (preg_match("/\[[\s\S]+?\]/", $excerpt["text"], $matches))
+                {
+                    return array(
+                        "extent" => strlen($matches[0]),
+                        "element" => array(
+                            "name" => "temporary-tag",
+                            "text" => $matches[0],
+                        ),
+                    );
+                }
+            };
+
+            $this->enable(["onOutputGenerated" => ["stripTemporaryTags", 0]]);
         }
 
         // Enable ellipsis
@@ -318,5 +340,27 @@ class MarkdownTypographyPlugin extends Plugin
                 }
             };
         }
+    }
+
+    public function stripTemporaryTags()
+    {
+        // Check that it's an HTML page, abort if not
+        if ($this->grav["page"]->templateFormat() !== 'html') {
+            return;
+        }
+
+        // Get the rendered content (HTML)
+        $content = $this->grav->output;
+
+        // Remove the temporary tags
+        $content = str_replace("<temporary-tag>", "", $content);
+        $content = str_replace("</temporary-tag>", "", $content);
+
+        // Remove encoded temporary tags (eg. those generatred by [safe-email])
+        $content = str_replace("&#60;&#116;&#101;&#109;&#112;&#111;&#114;&#97;&#114;&#121;&#45;&#116;&#97;&#103;&#62;", "", $content);
+        $content = str_replace("&#60;&#47;&#116;&#101;&#109;&#112;&#111;&#114;&#97;&#114;&#121;&#45;&#116;&#97;&#103;&#62;", "", $content);
+
+        // Rewrite the output
+        $this->grav->output = $content;
     }
 }
