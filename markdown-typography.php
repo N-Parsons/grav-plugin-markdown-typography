@@ -340,6 +340,33 @@ class MarkdownTypographyPlugin extends Plugin
                 }
             };
         }
+
+        // Enable X Times
+        if ($config["x_times"]) {
+            // Add inline type
+            $markdown->addInlineType("x", "TypographyXTimes");
+
+            // Add function to handle inline type
+            $markdown->inlineTypographyXTimes = function($excerpt) {
+                $this->grav["debugger"]->addMessage($excerpt);
+
+                $this->grav["debugger"]->addMessage(substr($excerpt["text"], 0, 2));
+
+                if (
+                    (substr($excerpt["text"], 0, 2) == "x ") and
+                    (preg_match("/( ".$excerpt["text"].")/", $excerpt["context"], $matches))
+                )
+                {
+                    return array(
+                        "extent" => 1,
+                        "element" => array(
+                            "name" => "span",
+                            "text" => "×",  // times symbol
+                        ),
+                    );
+                }
+            };
+        }
     }
 
     public function stripTemporaryTags()

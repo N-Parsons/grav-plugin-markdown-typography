@@ -1,3 +1,10 @@
+# v1.0.2
+
+## 2020-12-06
+
+1. [](#new)
+   - Added support for multiplication symbols via " x ".
+
 # v1.0.1
 
 ## 2020-07-12

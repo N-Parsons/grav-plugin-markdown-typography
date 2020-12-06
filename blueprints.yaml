@@ -1,5 +1,5 @@
 name: Markdown Typography
-version: 1.0.1
+version: 1.0.2
 description: "Enables substitution of typographic characters during Markdown processing"
 icon: quote-right
 author:
@@ -78,12 +78,24 @@ form:
         1: Enabled
         0: Disabled
       validate:
+        type: bool
 
     plus_minus:
       type: toggle
       label: Plus-minus ("+-" => "±", "+/-" => "±")
       highlight: 1
       default: 1
+      options:
+        1: Enabled
+        0: Disabled
+      validate:
+        type: bool
+
+    x_times:
+      type: toggle
+      label: Multiplication symbol (" x " => " × ")
+      highlight: 1
+      default: 0
       options:
         1: Enabled
         0: Disabled

@@ -5,6 +5,7 @@ dashes: true
 ellipsis: true
 interrobang: true
 plus_minus: true
+x_times: true
 arrows:
   enabled: true
   thin_arrows: "→,←,⟶,⟵"
