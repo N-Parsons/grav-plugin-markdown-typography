@@ -247,7 +247,7 @@ class MarkdownTypographyPlugin extends Plugin
             // Once Parsedown 1.8 is used in Grav, the temp tags will be unnecessary
             $markdown->addInlineType("[", "TypographyShortcode");
             $markdown->inlineTypographyShortcode = function($excerpt) {
-                if (preg_match("/\[[\s\S]+?\]/", $excerpt["text"], $matches))
+                if (preg_match("/\[[\s\S]+?((\".+?\")|(\'.+?\')|([\s\S]+?))*?\]/", $excerpt["text"], $matches))
                 {
                     return array(
                         "extent" => strlen($matches[0]),
@@ -348,10 +348,6 @@ class MarkdownTypographyPlugin extends Plugin
 
             // Add function to handle inline type
             $markdown->inlineTypographyXTimes = function($excerpt) {
-                $this->grav["debugger"]->addMessage($excerpt);
-
-                $this->grav["debugger"]->addMessage(substr($excerpt["text"], 0, 2));
-
                 if (
                     (substr($excerpt["text"], 0, 2) == "x ") and
                     (preg_match("/( ".$excerpt["text"].")/", $excerpt["context"], $matches))
