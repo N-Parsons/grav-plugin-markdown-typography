@@ -1,3 +1,10 @@
+# v1.0.4
+
+## 2020-12-27
+
+1. [](#bugfix)
+   - Forgot to push changes to GitHub before creating the release...
+
 # v1.0.3
 
 ## 2020-12-26
