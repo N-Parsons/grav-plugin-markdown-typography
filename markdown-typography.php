@@ -350,7 +350,7 @@ class MarkdownTypographyPlugin extends Plugin
             $markdown->inlineTypographyXTimes = function($excerpt) {
                 if (
                     (substr($excerpt["text"], 0, 2) == "x ") and
-                    (preg_match("/( ".$excerpt["text"].")/", $excerpt["context"], $matches))
+                    (preg_match("/( ".preg_quote($excerpt["text"], "/").")/", $excerpt["context"], $matches))
                 )
                 {
                     return array(
