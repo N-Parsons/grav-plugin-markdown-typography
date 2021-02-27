@@ -1,3 +1,10 @@
+# v1.0.5
+
+## 2021-02-27
+
+1. [](#bugfix)
+   - Fixed bug with multiplication symbols breaking pages.
+
 # v1.0.4
 
 ## 2020-12-27
